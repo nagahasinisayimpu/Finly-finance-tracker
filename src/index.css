@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-prussian-950 text-prussian-50 font-sans;
+  }
+
+  ::selection {
+    @apply bg-sky-400/30 text-white;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-prussian-900;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-prussian-600 rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-prussian-500;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-prussian-800/60 backdrop-blur-sm border border-prussian-700/50 rounded-2xl shadow-card;
+  }
+
+  .btn-white {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-white text-prussian-900 font-semibold
+           hover:bg-prussian-50 active:scale-[0.98] transition-all duration-150 shadow-sm;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-prussian-700/50 text-prussian-100
+           hover:bg-prussian-700 active:scale-[0.98] transition-all duration-150 border border-prussian-600/40;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-2.5 rounded-xl bg-prussian-900/60 border border-prussian-700/60 text-prussian-50
+           placeholder-prussian-300/40 focus:outline-none focus:ring-2 focus:ring-sky-400/40
+           focus:border-sky-400/40 transition-all duration-150;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-150 cursor-pointer;
+  }
+}
+
+/* ===== Light theme overrides =====
+   We override at the CSS level by targeting html.light and using raw values
+   to avoid Tailwind @apply circular dependencies. */
+
+html.light body {
+  background-color: #e8eef5;
+  color: #0a1828;
+}
+
+html.light ::selection {
+  background-color: rgba(56, 189, 248, 0.25);
+  color: #0a1828;
+}
+
+html.light ::-webkit-scrollbar-track {
+  background-color: #c5d5e6;
+}
+html.light ::-webkit-scrollbar-thumb {
+  background-color: #9ab8d3;
+}
+html.light ::-webkit-scrollbar-thumb:hover {
+  background-color: #6a96bd;
+}
+
+/* Component overrides */
+html.light .card {
+  background-color: rgba(255, 255, 255, 0.85);
+  border-color: #c5d5e6;
+  box-shadow: 0 2px 12px -2px rgba(0,0,0,0.08), 0 1px 3px -1px rgba(0,0,0,0.06);
+}
+
+html.light .btn-white {
+  background-color: #0a1828;
+  color: #ffffff;
+}
+html.light .btn-white:hover {
+  background-color: #152e4a;
+}
+
+html.light .btn-ghost {
+  background-color: #e8eef5;
+  color: #152e4a;
+  border-color: #c5d5e6;
+}
+html.light .btn-ghost:hover {
+  background-color: #c5d5e6;
+}
+
+html.light .input-field {
+  background-color: #f0f5fa;
+  border-color: #c5d5e6;
+  color: #0a1828;
+}
+html.light .input-field::placeholder {
+  color: #6a96bd;
+}
+
+/* Text color overrides — raw values to avoid @apply circular deps */
+html.light .text-white { color: #0a1828 !important; }
+html.light .text-prussian-50 { color: #0a1828 !important; }
+html.light .text-prussian-100 { color: #152e4a !important; }
+html.light .text-prussian-200 { color: #2a5685 !important; }
+html.light .text-prussian-300 { color: #3f73a3 !important; }
+
+/* Background overrides */
+html.light .bg-prussian-950 { background-color: #e8eef5 !important; }
+html.light .bg-prussian-900\/90 { background-color: rgba(255,255,255,0.92) !important; }
+html.light .bg-prussian-900\/80 { background-color: rgba(255,255,255,0.85) !important; }
+html.light .bg-prussian-900\/60 { background-color: #f0f5fa !important; }
+html.light .bg-prussian-900\/50 { background-color: #f0f5fa !important; }
+html.light .bg-prussian-900\/40 { background-color: #e8eef5 !important; }
+html.light .bg-prussian-800\/60 { background-color: rgba(255,255,255,0.85) !important; }
+html.light .bg-prussian-800 { background-color: #ffffff !important; }
+html.light .bg-prussian-700\/60 { background-color: #e8eef5 !important; }
+html.light .bg-prussian-700\/50 { background-color: #e8eef5 !important; }
+html.light .bg-prussian-700\/40 { background-color: #e8eef5 !important; }
+html.light .bg-prussian-700\/30 { background-color: #e8eef5 !important; }
+html.light .bg-prussian-700 { background-color: #c5d5e6 !important; }
+html.light .bg-prussian-600\/40 { background-color: #c5d5e6 !important; }
+
+/* Border overrides */
+html.light .border-prussian-700\/50 { border-color: #c5d5e6 !important; }
+html.light .border-prussian-700\/60 { border-color: #c5d5e6 !important; }
+html.light .border-prussian-700\/40 { border-color: #c5d5e6 !important; }
+html.light .border-prussian-700 { border-color: #9ab8d3 !important; }
+html.light .border-prussian-600\/40 { border-color: #c5d5e6 !important; }
+html.light .border-prussian-600\/30 { border-color: #c5d5e6 !important; }
+
+/* Modal backdrop stays dark for contrast */
+html.light .bg-prussian-950\/70 { background-color: rgba(6,15,29,0.5) !important; }
+
+/* Sidebar background override for desktop */
+@media (min-width: 1024px) {
+  html.light .lg\:bg-prussian-900\/80 { background-color: rgba(255,255,255,0.85) !important; }
+}
